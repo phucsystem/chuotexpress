@@ -22,6 +22,24 @@
 </head>
 <body>
 
+<?php
+$db_server = "localhost";
+$db_user_name = "root";
+$db_password = "123456";
+$db_name = "chuotexpress";
+
+// Create connection
+$conn = new mysqli($db_server, $db_user_name, $db_password, $db_name);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT * FROM `tbl_menu`;";
+$result = $conn->query($sql);
+
+?>
+
 <!-- Navigation -->
 <nav class="navbar navbar-inverse ">
     <div class="container">
@@ -39,9 +57,21 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class=""><a href="www.google.com">Home <span class="sr-only">(current)</span></a></li>
-                    <li class=""><a href="#">Business <span class="sr-only">(current)</span></a></li>
-                    <li class=""><a href="#">Science <span class="sr-only">(current)</span></a></li>
+                    <?php
+
+                    if ($result->num_rows > 0) {
+                        // output data of each row
+                        while ($row = $result->fetch_assoc()) {
+                            ?>
+
+                            <li class="" style="font-weight: bold; text-decoration: underline;">
+                                <a href="<?php echo $row["url"] ?>"><?php echo $row["name"] ?> <span class="sr-only">(current)</span></a>
+                            </li>
+
+                            <?php
+                        }
+                    }
+                    ?>
                 </ul>
             </div>
         </div>
@@ -89,23 +119,27 @@
     <br>
     <div class="row">
         <!-- LEFT CONTENT -->
-        <div class="col-md-8" >
+        <div class="col-md-8">
 
             <h1 class="news-type">Latest news</h1>
 
             <h1>Title</h1>
             <p class="lead">by <a href="#">Author</a></p>
-            <span class="glyphicon glyphicon-time"></span>  Posted on August 24, 2013 at 9:00 PM
+            <span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM
             <p class="lead">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam
+                sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum
+                minus inventore?
             </p>
 
             <hr>
             <h1>Title</h1>
             <p class="lead">by <a href="#">Author</a></p>
-            <span class="glyphicon glyphicon-time"></span>  Posted on August 24, 2013 at 9:00 PM
+            <span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM
             <p class="lead">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam
+                sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum
+                minus inventore?
             </p>
 
             <h1 class="news-type">Featured news</h1>
@@ -113,17 +147,21 @@
             <hr>
             <h1>Title</h1>
             <p class="lead">by <a href="#">Author</a></p>
-            <span class="glyphicon glyphicon-time"></span>  Posted on August 24, 2013 at 9:00 PM
+            <span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM
             <p class="lead">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam
+                sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum
+                minus inventore?
             </p>
 
             <hr>
             <h1>Title</h1>
             <p class="lead">by <a href="#">Author</a></p>
-            <span class="glyphicon glyphicon-time"></span>  Posted on August 24, 2013 at 9:00 PM
+            <span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM
             <p class="lead">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam
+                sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum
+                minus inventore?
             </p>
 
 

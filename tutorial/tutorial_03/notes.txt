@@ -1,0 +1,10 @@
+Menu
+- Database => Done
+- Sample data => Done
+- Load database to html via PHP => done
+
+
+PHP create a connection database
+Get data from dataabase
+Duplicate HTML 5 times => create 4 li tags
+Insert data to inner HTML
